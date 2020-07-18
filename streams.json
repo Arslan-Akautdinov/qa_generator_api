@@ -1,0 +1,13 @@
+[
+    {
+        "audio_codec": "aac",
+        "bit_rate": "512k",
+        "file_name": "test_video4",
+        "file_type": "mp4",
+        "fps": "20",
+        "play_time": "10",
+        "quality": "640x480",
+        "uuid": "a27da9d27c9f4453b6eccf5984f8927b",
+        "video_codec": "libx264"
+    }
+]
