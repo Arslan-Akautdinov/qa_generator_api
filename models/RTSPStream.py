@@ -13,3 +13,4 @@ class RTSPStream:
         self.bit_rate = data["bit_rate"]
         self.quality = data["quality"]
         self.fps = data["fps"]
+        self.rtsp_url = f"rtsp://10.50.6.127:21554/stream/{self.file_name}.{self.file_type}/live"

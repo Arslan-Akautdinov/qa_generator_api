@@ -2,11 +2,16 @@ import os
 import json
 import config
 
+from flask_cors import CORS
+from flasgger import Swagger
+
+
 from flask import Flask, request, Response
 from impl.FFMPEGClient import FFMPEGClient
 from models.RTSPStream import RTSPStream
 
 app = Flask(__name__, static_folder='static')
+cors = CORS(app)
 
 
 def get_streams(stream_uuid=None):
@@ -15,6 +20,7 @@ def get_streams(stream_uuid=None):
     code = 404
     if stream_uuid is None:
         stream_result = json.dumps(streams)
+        code = 200
     else:
         for stream in streams:
             if stream["uuid"] == stream_uuid:
@@ -29,7 +35,11 @@ def add_streams(stream: RTSPStream):
     streams: list = json.load(open(os.path.join(config.DIR_ROOT, "streams.json")))
     streams.append(stream.__dict__)
     open(os.path.join(config.DIR_ROOT, "streams.json"), "w").write(json.dumps(streams, indent=4, sort_keys=True))
-    return f"rtsp://10.50.6.127:21554/stream/{stream.file_name}.{stream.file_type}/live"
+    resp = Response(f"rtsp://10.50.6.127:21554/stream/{stream.file_name}.{stream.file_type}/live")
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Content-Type'] = 'application/json'
+    resp.status_code = 201
+    return resp
 
 
 def del_streams(stream_uuid):
@@ -60,7 +70,7 @@ def streams_delete(stream_uuid):
 
 @app.route("/api/v1/streams", methods=['POST'])
 def streams_create():
-    return add_streams(RTSPStream(request.get_json())), 201
+    return add_streams(RTSPStream(request.get_json()))
 
 
 if __name__ == "__main__":
