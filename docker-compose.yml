@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+
+    qa_generator_api:
+        build: .
+        tty: true
+        ports:
+            - "5600:5600"
+        volumes:
+            - ./:/qa_generator_api
+        working_dir: /qa_generator_api
+        command: bash -c "
+            pip3 install --no-cache-dir -r requirements.txt
+            && python3 app.py
+            "
