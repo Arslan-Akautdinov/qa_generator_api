@@ -1,14 +1,3 @@
 [
-    {
-        "audio_codec": "aac",
-        "bit_rate": "512K",
-        "file_name": "asdasd",
-        "file_type": "mp4",
-        "fps": "15",
-        "play_time": "10",
-        "quality": "640x480",
-        "rtsp_url": "rtsp://10.50.6.127:21554/stream/asdasd.mp4/live",
-        "uuid": "56743c578a574255abfea1cdce34abc5",
-        "video_codec": "libx264"
-    }
+
 ]
