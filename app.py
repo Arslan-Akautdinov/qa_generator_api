@@ -34,7 +34,7 @@ def add_streams(stream: RTSPStream):
     streams: list = json.load(open(os.path.join(config.DIR_ROOT, "streams.json")))
     streams.append(stream.__dict__)
     open(os.path.join(config.DIR_ROOT, "streams.json"), "w").write(json.dumps(streams, indent=4, sort_keys=True))
-    resp = Response(f"rtsp://10.50.6.127:21554/stream/{stream.file_name}.{stream.file_type}/live")
+    resp = Response(stream.uuid)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Content-Type'] = 'application/json'
     resp.status_code = 201
