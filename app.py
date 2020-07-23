@@ -2,6 +2,7 @@ from flask_cors import CORS
 from models.RTSPStream import RTSPStream
 from flask import Flask, request, Response
 from impl.StreamManager import StreamManager
+import config
 
 stream_manager = StreamManager()
 app = Flask(__name__, static_folder='static')
@@ -33,7 +34,7 @@ def streams_delete(stream_uuid):
 
 @app.route("/api/v1/streams", methods=['POST'])
 def streams_create():
-    stream = RTSPStream(request.get_json())
+    stream = RTSPStream(request.get_json(), config.HOST)
     stream_manager.add_streams(stream)
     return Response(stream.uuid, status=200, headers=headers)
 
