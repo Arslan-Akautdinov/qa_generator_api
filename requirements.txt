@@ -11,7 +11,7 @@ jsonschema==3.2.0
 MarkupSafe==1.1.1
 mistune==0.8.4
 pyrsistent==0.16.0
-PyYAML==5.3.1
+PyYAML==5.4
 six==1.15.0
 Werkzeug==1.0.1
 zipp==3.1.0
