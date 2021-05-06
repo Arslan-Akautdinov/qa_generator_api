@@ -2,7 +2,7 @@ attrs==19.3.0
 click==7.1.2
 flasgger==0.9.4
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 flask-swagger-ui==3.25.0
 importlib-metadata==1.7.0
 itsdangerous==1.1.0
